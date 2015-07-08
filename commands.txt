@@ -1,0 +1,15 @@
+# update workflow
+git add -A
+git commit -m "message"
+git push -u origin master
+
+
+
+git add . # add all new files
+git add -u # updates tracking for files that changed names or were deleted
+git add -A # does both of previous
+git commit -m "message" # "message" description of what you've did
+git push
+git checkout -b branchname #branch copy of specific directory
+git branch #which branch
+git checkout master #switchback to master directory
