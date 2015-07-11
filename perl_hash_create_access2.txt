@@ -1,0 +1,74 @@
+#work with hash
+
+
+
+#use a list, which is converted by taking individual 
+#pairs from the list: the first element of the pair 
+#is used as the key, 
+#and the second, as the value.
+%data2 = ("John Paul", 45, "Lisa", 30, "Kumar", 40);
+
+# use => as an alias for , to indicate the key/value pairs as follows
+%data3 = ("John Paul" => 45, "Lisa" => 30, "Kumar" => 40);
+
+
+
+#access individual elements
+
+#use single quotes
+print "$data3{'John Paul'}\n";
+print "$data3{'Lisa'}\n";
+print "$data3{'Kumar'}\n";
+
+#extracting slices
+
+@array = @data3{"John Paul", "Kumar"};
+print "@array\n";
+
+#extracting keys
+
+@names = keys %data3; #cretae array containing keys of hash data
+print "$names[0]\n";
+
+#extracting values
+
+@ages = values %data3;
+print "$ages[0]\n";
+
+#cheking for existance
+
+if(exists($data3{'Lisa'})){
+   print "Lisa is $data3{'Lisa'} years old\n";
+}
+else{
+   print "I don't know age of Lisa\n";
+}
+
+#hash size
+
+@keys = keys %data3;
+$size =@keys;
+print "hash size is $size\n";
+
+@values = values %data3;
+$size = @values;
+print "Hash size:  is $size\n";
+
+#Add elements
+$data3{"Ali"}=55;
+@keys = keys %data3;
+$size =@keys;
+print "hash  size is $size\n";
+@data3_array = %data3;
+print "new hash is @data3_array\n";
+
+#remove elements
+##DOESNOT WORK !!???
+delete $data3{"Ali"};
+@keys = keys %data3;
+$size=@keys;
+print "@hash size restored $size\n";
+@data3_r_array = %data3;
+print "new hash is @data3_r_array\n";
+
+

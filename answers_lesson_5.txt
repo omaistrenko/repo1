@@ -1,0 +1,141 @@
+1) Create an array that contains the names of 5 students of this class. 
+(You don't need a loop to do that. Simply assign the 5 values.) Print the 
+array. Remove (pop) the last name from the array. Print the array. Ask a 
+user to type in her/his name. Add (push) that name to the array. Print the 
+array. Ask a user to input a number. Print the name that has that number as 
+index. Add "John Smith" and "Mary Miller" at the beginning of the array. 
+Print the array. Print the array in alphabetical and in reverse order.
+
+#!/usr/local/bin/perl -w
+#
+@class=("John", "Susan", "Sloane", "Scott", "David");
+print "@class\n";
+pop(@class);
+print "@class\n";
+print "What is your name?";
+$newname = <STDIN>;
+chomp($newname);
+push (@class,$newname);
+print "@class\n";
+print "Please enter a number:";
+$number=<STDIN>;
+chomp ($number);
+print "$class[$number]\n";
+@class = ("John Smith", "Mary Miller", @class);
+print "@class\n";
+@alpha_class= sort @class;
+print "@alpha_class\n";
+@reverse_class = reverse @class;
+print "@reverse_class\n";
+
+3) Create a second copy of the array in reverse order. Add a second 
+foreach loop that prints the reverse copy. 
+
+#!/usr/local/bin/perl -w
+#
+# if statement
+#
+@zoo = ("tiger", "elephant", "monkey");
+foreach $animal (@zoo){
+    $animal = "_".$animal."_";
+    print "$animal";
+}
+print "\n";
+@reversezoo = reverse (@zoo);
+foreach $animal (@reversezoo) {
+    print "$animal";
+}
+
+4) Use the array of student names from exercise 1. Create a foreach 
+loop that prints for each student "hello $student, how are you?".
+
+@class=("John", "Susan", "Sloane", "Scott", "David");
+foreach $student (@class) {
+    print "Hello $student, how are you?\n";
+}
+
+Input from a file
+===================
+
+5) Modify the program so that the lines are printed in reverse order. 
+
+#!/usr/local/bin/perl
+#
+open(ALICE, "alice.txt");
+@lines = <ALICE> ;
+close(ALICE);
+@lines = reverse(@lines);
+print @lines;     
+
+6) Output to another file instead of the screen. Then change 
+the script so that it appends the output to an existing file.
+
+#!/usr/local/bin/perl
+#
+# Program to read and print a file
+#
+open(ALICE, "alice.txt");
+open(OUT1, ">overwrite.txt");
+open(OUT2, ">>append.txt");
+@lines = <ALICE> ;
+close(ALICE);
+print OUT1 @lines;
+print OUT2 @lines;
+close(OUT1);
+close(OUT2);
+
+7) Optional: Modify the program so that each line is printed with a line 
+number at the beginning. 
+
+#!/usr/local/bin/perl
+#
+open(ALICE, "alice.txt");
+@lines = <ALICE> ;
+close(ALICE);
+
+$counter =1;
+foreach $line (@lines) {
+        print $counter++;
+        print " $line";
+}   
+
+8) Optional: Print the lines with a # character at the beginning. 
+
+#!/usr/local/bin/perl
+#
+open(ALICE, "alice.txt");
+@lines = <ALICE> ;
+chomp @lines;
+close(ALICE);
+$" = "\n\# ";
+print "# ";
+print "@lines";
+print "\n";
+
+
+Hashs
+=====
+
+9) Create a second hash (such as "age") and print it. 
+
+#!/usr/local/bin/perl
+#
+# defining a hash
+%relatives =("Lisa" => "daughter", "Bart" => "son", "Marge" => "mother", "Homer" => "father", "Santa" => "dog");
+
+# to print a single element: 
+print "Lisa is a $relatives{Lisa}\n";
+
+# to print an entire hash it should be converted into an array
+@array = %relatives;
+print "@array\n"; 
+
+%age = ("Lisa" => 7, "Bart" => 8, "Marge" => 35, "Homer" => 40, "Santa" => 2);
+
+@array = %age;
+print "@array\n";
+
+
+
+
+
